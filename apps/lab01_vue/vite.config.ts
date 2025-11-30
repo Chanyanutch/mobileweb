@@ -12,8 +12,8 @@ export default defineConfig({
     legacy()
   ],
   build: {
-	outDir: path.resolve(__dirname,"../../docs/lab01_vue"),
-	emptyOutDir : true
+	  outDir: path.resolve(__dirname,"../../docs/lab01_vue"),
+	  emptyOutDir : true
 },
   resolve: {
     alias: {
