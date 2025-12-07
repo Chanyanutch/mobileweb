@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKU Campus Guide</title>
+  <style>
+    /* make sizing predictable and prevent inputs from overflowing */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --brick: #b85c38;
+      --brick-light: #d68a63;
+      --bg: #fffaf7;
+      --text: #2d2d2d;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(120deg, #b85c38, #d68a63);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    #logoImg {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: auto;
+      max-width: 25%;
+      max-height: 120px;
+      border-radius: 6px;
+      object-fit: contain;
+      animation: floatLogo 3s ease-in-out infinite;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      background: transparent;
+      padding: 0;
+      display: block;
+    }
+    header h1 {
+      margin: 0;
+      margin-top: 140px;
+      font-size: 2.4rem;
+      animation: fadeSlide 1.2s ease forwards;
+      text-align: center;
+    }
+    /* animate header in word-chunks */
+    .word {
+      display: inline-block;
+      transform-origin: center bottom;
+      animation: bounce 1.6s cubic-bezier(.2,.8,.2,1) infinite;
+      animation-delay: calc(var(--i, 0) * 0.28s);
+      will-change: transform;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      20% { transform: translateY(-14px) scale(1.02); }
+      50% { transform: translateY(0); }
+    }
+    @keyframes fadeSlide {
+      from {opacity: 0; transform: translateY(-10px);} 
+      to {opacity: 1; transform: translateY(0);} 
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      background: white;
+      padding: 0;
+      border-radius: 12px;
+      border: 1px solid var(--brick-light);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      margin: 0;
+      color: white;
+      background: var(--brick);
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px 12px 0 0;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 3px solid var(--brick-light);
+      object-fit: cover;
+      height: 160px;
+    }
+
+    /* ฟอร์มแนะนำสถานที่ */
+    form {
+      background: white;
+      padding: 1.5rem 1.2rem;
+      border-radius: 0 0 12px 12px;
+      border: none;
+      box-shadow: none;
+      margin-top: 0;
+    }
+    form label {
+      display: block;
+      margin-top: .8rem;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      min-width: 0; /* prevent overflow in flex/grid contexts */
+      max-width: 100%;
+      padding: .7rem;
+      border: 1px solid #ccc;
+      margin-top: .3rem;
+      border-radius: 8px;
+      overflow: auto;
+      word-break: break-word;
+    }
+    form button {
+      margin-top: 1.2rem;
+      padding: 0.9rem 2rem;
+      background: var(--brick);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 1.05rem;
+      width: 60%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: .3s;
+    }
+    form button:hover {
+      background: #9e4d2f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: var(--brick);
+      color: white;
+      margin-top: 2rem;
+    }
+  @keyframes floatLogo {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+  </style>
+  <style>
+    /* Responsive tweaks for logo on small screens */
+    @media (max-width: 600px) {
+      #logoImg {
+        width: 80px;
+        top: 12px;
+        max-width: 28%;
+      }
+      header h1 {
+        margin-top: 112px;
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="logoImg" src="./KKULogo.png" alt="KKU Logo" />
+    <h1>
+      <span class="word" style="--i:0">KKU</span>
+      <span class="word" style="--i:1">Campus</span>
+      <span class="word" style="--i:2">Guide</span>
+    </h1>
+    <p style="padding: 1rem 1.2rem;">โดย: 663380205-5 นางสาว ชัญญานุช ปาละนันทน์</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. ศูนย์อาหารคอมเพล็กซ์ </h2>
+      <p style="padding: 1rem 1.2rem;">แหล่งรวมอาหารยอดนิยมของนักศึกษา ราคาย่อมเยา บรรยากาศคึกคัก อยู่ใกล้คณะวิทยาศาสตร์ (ปัจจุบันกำลังจะเข้าสู่การปรับปุรง)</p>
+      <div class="gallery" style="padding: 0 1.2rem 1.2rem;">
+        <img src="images/complex1.jpg">
+        <img src="images/complex2.jpg">
+      </div>
+    </section>
+
+    <section>
+      <h2>2. คุ้มสีฐาน</h2>
+      <p style="padding: 1rem 1.2rem;">พื้นที่อาคารชุดสำหรับจัดกิจกรรมหลากหลายรูปแบบ เป็นศูนย์ในการทำกิจกรรมต่างๆ ทั้งในส่วนของสถานที่และภาพลักษณ์ในการทำกิจกรรมในอนาคต รวมทั้งเป็นบริเวณของศูนย์กลางด้านวัฒนธรรม เป็นบริเวณที่จัดการเรียนรู้ที่หลากหลาย</p>
+      <div class="gallery" style="padding: 0 1.2rem 1.2rem;">
+        <img src="images/Si_Than_C1.jpg">
+        <img src="images/Si_Than_C2.jpg">
+      </div>
+    </section>
+
+    <section>
+      <h2>3. ศูนย์ประชุมอเนกประสงค์กาญจนาภิเษก</h2>
+      <p style="padding: 1rem 1.2rem;">อาคารขนาดใหญ่ทรงกูบเกวียน ตั้งอยู่ทางทิศตะวันออกจากบึงสีฐาน เหมาะสำหรับการจัดประชุมสัมมนา การแสดงนิทรรศการ การจัดกิจกรรมพิเศษต่าง ๆ</p>
+      <div class="gallery" style="padding: 0 1.2rem 1.2rem;">
+        <img src="images/goldenjubilee1.jpg">
+        <img src="images/goldenjubilee2.jpg">
+      </div>
+    </section>
+
+    <section>
+      <h2>4. สถาบันขงจื้อ</h2>
+      <p style="padding: 1rem 1.2rem;">สถาบันสอนภาษาและวัฒนธรรมจีนแก่ นักเรียน นักศึกษาและบุคลากรของมหาลัยขอนแก่น</p>
+      <div class="gallery" style="padding: 0 1.2rem 1.2rem;">
+        <img src="images/Confucius1.jpg">
+        <img src="images/Confucius2.jpg">
+      </div>
+    </section>
+
+    <section>
+      <h2>แบบฟอร์มแนะนำสถานที่เพิ่มเติม</h2>
+      <form>
+        <label>ชื่อสถานที่</label>
+        <input type="text" placeholder="กรอกชื่อสถานที่" />
+
+        <label>รายละเอียด</label>
+        <textarea rows="4" placeholder="กรอกรายละเอียดสถานที่"></textarea>
+
+        <label>URL ของภาพ</label>
+        <input type="text" placeholder="https://example.com/image.jpg" />
+
+        <button>ส่งข้อมูล</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p style="padding: 1rem 1.2rem;">KKU Campus Guide © 2025</p>
+  </footer>
+
+  <script>
+    // Trigger fadeSlide animation for header title
+    document.querySelector('header h1').style.animation = 'fadeSlide 1.2s ease';
+  </script>
+</body>
+</html>
