@@ -76,6 +76,27 @@
         background: linear-gradient(90deg, #0077b6, #00b4d8);
         color: white;
       }
+
+      .input-form-container {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+      }
+
+      .input-form-container .form-control,
+      .input-form-container .btn {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .input-form-container input[type="number"] {
+        flex: 0.6;
+      }
+
+      .input-form-container button {
+        flex: 0.6;
+      }
     </style>
   </head>
 
@@ -90,43 +111,20 @@
     <div class="card p-3 mb-4 shadow-sm">
       <h5>➕ เพิ่มนักศึกษา</h5>
 
-      <div class="row g-2 mt-1">
-
-        <div class="col-auto">
-          <input id="id" type="text" class="form-control" placeholder="ID" />
-        </div>
-
-        <div class="col-auto">
-          <select id="title_name" class="form-control">
-            <option value="">คำนำหน้า</option>
-            <option>นาย</option>
-            <option>นางสาว</option>
-            <option>นาง</option>
-          </select>
-        </div>
-
-        <div class="col-auto">
-          <input id="first_name" type="text" class="form-control" placeholder="ชื่อ" />
-        </div>
-
-        <div class="col-auto">
-          <input id="last_name" type="text" class="form-control" placeholder="นามสกุล" />
-        </div>
-
-        <div class="col-auto">
-          <input id="email" type="email" class="form-control" placeholder="อีเมล" />
-        </div>
-
-        <div class="col-auto">
-          <input id="year" type="number" class="form-control" placeholder="ปี" style="width: 60px;" />
-        </div>
-
-        <div class="col-auto">
-          <input id="major" type="text" class="form-control" placeholder="สาขา" />
-        </div>
-        <div class="col-auto">
-          <button id="addBtn" class="btn btn-primary">เพิ่ม</button>
-        </div>
+      <div class="input-form-container mt-1">
+        <input id="id" type="text" class="form-control" placeholder="ID" />
+        <select id="title_name" class="form-control">
+          <option value="">คำนำหน้า</option>
+          <option>นาย</option>
+          <option>นางสาว</option>
+          <option>นาง</option>
+        </select>
+        <input id="first_name" type="text" class="form-control" placeholder="ชื่อ" />
+        <input id="last_name" type="text" class="form-control" placeholder="นามสกุล" />
+        <input id="email" type="email" class="form-control" placeholder="อีเมล" />
+        <input id="year" type="number" class="form-control" placeholder="ปี" />
+        <input id="major" type="text" class="form-control" placeholder="สาขา" />
+        <button id="addBtn" class="btn btn-primary">เพิ่ม</button>
       </div>
     </div>
 
@@ -163,6 +161,30 @@
       </thead>
       <tbody id="studentTableBody"></tbody>
     </table>
+
+    <script type="module">
+      import { StudentManager } from './dist/managers/StudentManager.js';
+      
+      const manager = new StudentManager();
+      manager.loadFromLocalStorage();
+      
+      // โหลดและแสดงข้อมูลจาก localStorage ตอนหน้าเปิด
+      const students = manager.getAllStudents();
+      const tableBody = document.getElementById('studentTableBody');
+      students.forEach((s) => {
+        tableBody.innerHTML += `
+          <tr>
+            <td>${s.id}</td>
+            <td>${s.title_name}</td>
+            <td>${s.first_name}</td>
+            <td>${s.last_name}</td>
+            <td>${s.email}</td>
+            <td>${s.year}</td>
+            <td>${s.major}</td>
+          </tr>
+        `;
+      });
+    </script>
 
     <script type="module" src="./dist/app.js"></script>
   </body>
