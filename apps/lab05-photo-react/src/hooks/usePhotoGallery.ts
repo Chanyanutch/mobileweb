@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import type { Photo } from "@capacitor/camera";
 import { Filesystem, Directory } from "@capacitor/filesystem";
@@ -9,6 +9,15 @@ export interface UserPhoto {
   filepath: string;
   webviewPath?: string;
 }
+
+const convertBlobToBase64 = (blob: Blob): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(blob);
+  });
+};
 
 export function usePhotoGallery() {
   const [photos, setPhotos] = useState<UserPhoto[]>([]);
@@ -26,7 +35,7 @@ export function usePhotoGallery() {
     setPhotos([savedImageFile, ...photos]);
   };
 
-  const savePicture = async (
+  const savePicture = useCallback(async (
     photo: Photo,
     fileName: string
   ): Promise<UserPhoto> => {
@@ -58,16 +67,7 @@ export function usePhotoGallery() {
           filepath: fileName,
           webviewPath: photo.webPath,
         };
-  };
-
-  const convertBlobToBase64 = (blob: Blob): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = reject;
-      reader.onload = () => resolve(reader.result as string);
-      reader.readAsDataURL(blob);
-    });
-  };
+  }, []);
 
   return {
     addNewToGallery,
