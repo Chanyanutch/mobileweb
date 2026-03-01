@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "368716721909",
+    "project_id": "lab06ionicfirebase",
+    "storage_bucket": "lab06ionicfirebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368716721909:android:42ae9eb54e902b60019fbc",
+        "android_client_info": {
+          "package_name": "cpkku.chanyanutch.lab07"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPNkvYfGxmPUgbg_M4MgqIovOXQQTDjBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
