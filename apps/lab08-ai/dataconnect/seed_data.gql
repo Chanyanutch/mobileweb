@@ -1,0 +1,112 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This is a seed mutation and is safe to execute by any authenticated user for demo purposes.") {
+  user_insertMany(data: [
+    {
+      id: "770e8400-e29b-41d4-a716-446655440000",
+      displayName: "Alice Wonderland",
+      email: "alice@example.com",
+      createdAt: "2023-01-01T10:00:00Z"
+    },
+    {
+      id: "880e8400-e29b-41d4-a716-446655440001",
+      displayName: "Bob The Builder",
+      email: "bob@example.com",
+      createdAt: "2023-01-02T11:00:00Z"
+    }
+  ])
+  movie_insertMany(data: [
+    {
+      id: "111e8400-e29b-41d4-a716-446655440000",
+      title: "The Great Adventure",
+      year: 2020,
+      createdAt: "2023-01-01T10:05:00Z",
+      summary: "A thrilling tale of courage and exploration.",
+      genres: ["Adventure", "Action"],
+      runtimeMinutes: 120
+    },
+    {
+      id: "222e8400-e29b-41d4-a716-446655440001",
+      title: "Mystery in the Mountains",
+      year: 2022,
+      createdAt: "2023-01-02T11:10:00Z",
+      summary: "Detectives unravel a puzzling case in a remote mountain range.",
+      genres: ["Mystery", "Thriller"],
+      runtimeMinutes: 95
+    }
+  ])
+  movieList_insertMany(data: [
+    {
+      id: "333e8400-e29b-41d4-a716-446655440000",
+      userId: "770e8400-e29b-41d4-a716-446655440000",
+      name: "Alice's Favorite Films",
+      isPublic: true,
+      createdAt: "2023-01-03T12:00:00Z",
+      updatedAt: "2023-01-03T12:00:00Z",
+      description: "A collection of my all-time favorite movies!"
+    },
+    {
+      id: "444e8400-e29b-41d4-a716-446655440001",
+      userId: "880e8400-e29b-41d4-a716-446655440001",
+      name: "Bob's Top Picks",
+      isPublic: false,
+      createdAt: "2023-01-04T13:00:00Z",
+      updatedAt: "2023-01-04T13:00:00Z",
+      description: "Movies I'd recommend to everyone."
+    }
+  ])
+  movieListEntry_insertMany(data: [
+    {
+      movieListId: "333e8400-e29b-41d4-a716-446655440000",
+      movieId: "111e8400-e29b-41d4-a716-446655440000",
+      position: 1,
+      note: "A must-see adventure!"
+    },
+    {
+      movieListId: "444e8400-e29b-41d4-a716-446655440001",
+      movieId: "222e8400-e29b-41d4-a716-446655440001",
+      position: 1,
+      note: "Kept me on the edge of my seat."
+    }
+  ])
+  watch_insertMany(data: [
+    {
+      id: "555e8400-e29b-41d4-a716-446655440000",
+      userId: "770e8400-e29b-41d4-a716-446655440000",
+      movieId: "111e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2023-01-05T14:00:00Z",
+      watchDate: "2023-01-05",
+      location: "Home"
+    },
+    {
+      id: "666e8400-e29b-41d4-a716-446655440001",
+      userId: "880e8400-e29b-41d4-a716-446655440001",
+      movieId: "222e8400-e29b-41d4-a716-446655440001",
+      createdAt: "2023-01-06T15:00:00Z",
+      watchDate: "2023-01-06",
+      location: "Cinema"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "999e8400-e29b-41d4-a716-446655440000",
+      userId: "770e8400-e29b-41d4-a716-446655440000",
+      movieId: "111e8400-e29b-41d4-a716-446655440000",
+      watchId: "555e8400-e29b-41d4-a716-446655440000",
+      rating: 5,
+      createdAt: "2023-01-07T16:00:00Z",
+      updatedAt: "2023-01-07T16:00:00Z",
+      isPublic: true,
+      textReview: "Absolutely loved it! A classic adventure film."
+    },
+    {
+      id: "aaa0e8400-e29b-41d4-a716-446655440001",
+      userId: "880e8400-e29b-41d4-a716-446655440001",
+      movieId: "222e8400-e29b-41d4-a716-446655440001",
+      watchId: "666e8400-e29b-41d4-a716-446655440001",
+      rating: 4,
+      createdAt: "2023-01-08T17:00:00Z",
+      updatedAt: "2023-01-08T17:00:00Z",
+      isPublic: false,
+      textReview: "A solid mystery, though a bit slow at times."
+    }
+  ])
+}
